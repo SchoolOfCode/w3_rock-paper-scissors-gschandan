@@ -16,11 +16,11 @@
     font-family: 'RockPaperScissors','Segoe UI', Tahoma, Verdana, sans-serif;
     display: flex;
     flex-flow: column;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .greet{
-    font-size: 2em;
+    font-size: 2.75em;
     font-weight: lighter;
     text-align: center;
     color:rgb(115, 215, 255);
@@ -34,43 +34,33 @@
     align-items: center;
 }
 #choice{
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: lighter;
+    padding: 0 0 0 1vw;
 }
 span {
-
+    font-size: 1.5em;
     font-weight: lighter;
+    color:skyblue;
+    padding: 0 0 0 2vw;
 }
 span:hover {
-    font-size: 1.5em;
+    font-size: 1.75em;
     font-weight: lighter;
     color: lightcoral;
 }
-
 #icon-rock:before {
     content: "\e901";
-    color:skyblue;
-    font-size: 1em;
-}
-#icon-rock:hover::before {
-    color: lightcoral;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    opacity: 1.0;
 }
 #icon-paper:before {
     content: "\e926";
-    color:skyblue;
-    font-size: 1em;
-}
-#icon-paper:hover::before {
-    color: lightcoral;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    opacity: 1.0;
 }
 #icon-scissors:before {
     content: "\ea5a";
-    color:skyblue;
-    font-size: 1em;
-}
-#icon-scissors:hover::before {
-    color: lightcoral;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    opacity: 1.0;
 }

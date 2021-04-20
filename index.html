@@ -13,16 +13,22 @@
     <main>
       <div class="game">
           <div class="player">
-          <p id="choice">Choose your item:</p>
-          <span id="icon-rock">Rock</span><br>
-          <span id="icon-paper">Paper</span><br>
-          <span id="icon-scissors">Scissors</span><br>
+            <p id="choice">Choose your item:</p>
+            <div id="rock">
+              <span id="icon-rock" onclick="set_player_move(1)">Rock</span><br>
+            </div>
+            <div id="paper">
+              <span id="icon-paper" onclick="set_player_move(2)">Paper</span><br>
+            </div>
+            <div id="scissors">
+              <span id="icon-scissors" onclick="set_player_move(3)">Scissors</span><br>
+            </div>
           </div>
           <div class="computer">
 
           </div>
       </div>
     </main>
-    <!--<script src="main.js"></script>-->
+    <script src="main.js"></script>
   </body>
 </html>
