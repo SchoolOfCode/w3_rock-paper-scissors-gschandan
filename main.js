@@ -22,7 +22,9 @@ function set_player_move(move_clicked){
     }
     icons.push(chosen_move);
     document.getElementById(chosen_move).style.color = "rgb(128, 240, 162)";
-
+    document.getElementById(chosen_move).style.color = "rgb(128, 240, 162)";
+    document.getElementById(chosen_move).style.color = "rgb(128, 240, 162)";
+    
     player.move=move_clicked;
     console.log(player.move,computer.move);
     

@@ -13,19 +13,28 @@
     <main>
       <div class="game">
           <div class="player">
-            <p id="choice">Choose your item:</p>
+            <p id="headings">Choose your item:</p>
             <div id="rock">
-              <span id="icon-rock" onclick="set_player_move(1)">Rock</span><br>
+              <span class="player_move" id="icon-rock" onclick="set_player_move(1)">Rock</span>
             </div>
             <div id="paper">
-              <span id="icon-paper" onclick="set_player_move(2)">Paper</span><br>
+              <span class="player_move" id="icon-paper" onclick="set_player_move(2)">Paper</span>
             </div>
             <div id="scissors">
-              <span id="icon-scissors" onclick="set_player_move(3)">Scissors</span><br>
+              <span class="player_move" id="icon-scissors" onclick="set_player_move(3)">Scissors</span>
             </div>
           </div>
+          <div id="vs">
+            <p>VS</p>
+          </div>
           <div class="computer">
-
+            <p id="headings">Computer:</p>
+            <div id="monitor">
+              <span class="computer_disp" id="icon-computer"></span>
+            </div>
+            <div id="keyboard">
+              <span class="computer_disp" id="icon-keyboard"></span>
+            </div>
           </div>
       </div>
     </main>

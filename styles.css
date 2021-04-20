@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'RockPaperScissors';
-    src:  url('fonts/RockPaperScissors.eot?bpqwc8');
-    src:  url('fonts/RockPaperScissors.eot?bpqwc8#iefix') format('embedded-opentype'),
-      url('fonts/RockPaperScissors.ttf?bpqwc8') format('truetype'),
-      url('fonts/RockPaperScissors.woff?bpqwc8') format('woff'),
-      url('fonts/RockPaperScissors.svg?bpqwc8#RockPaperScissors') format('svg');
+    src:  url('fonts/RockPaperScissors.eot?46loin');
+    src:  url('fonts/RockPaperScissors.eot?46loin#iefix') format('embedded-opentype'),
+      url('fonts/RockPaperScissors.ttf?46loin') format('truetype'),
+      url('fonts/RockPaperScissors.woff?46loin') format('woff'),
+      url('fonts/RockPaperScissors.svg?46loin#RockPaperScissors') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
-}
+  }
 
 .parent{
     background: rgb(49, 49, 49);
@@ -25,26 +25,30 @@
     text-align: center;
     color:rgb(115, 215, 255);
 }
-
+div{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
 .game{
-    flex-flow: row;
+    flex-flow: row wrap;
 }
 .player{
     flex-flow: column;
-    align-items: center;
 }
-#choice{
+#headings{
     font-size: 1.5em;
     font-weight: lighter;
     padding: 0 0 0 1vw;
 }
-span {
+span.player_move {
     font-size: 1.5em;
     font-weight: lighter;
     color:skyblue;
-    padding: 0 0 0 2vw;
+    padding: 0 2vw 0 2vw;
 }
-span:hover {
+span.player_move:hover {
     font-size: 1.75em;
     font-weight: lighter;
     color: lightcoral;
@@ -64,3 +68,24 @@ span:hover {
     font-size: 1.2em;
     opacity: 1.0;
 }
+#vs{
+    padding: 2vh 0 0 0;
+    align-self:center;
+    font-size: 1.5em;
+}
+
+.computer{
+    flex-flow: column;
+}
+span.computer_disp:hover{
+    color: lightyellow;
+}
+#icon-computer:before {
+    font-size: 3.5em;
+    content: "\e956";
+}
+#icon-keyboard:before {
+    font-size: 2.75em;
+    content: "\e955";
+}
+
