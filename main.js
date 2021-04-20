@@ -24,13 +24,13 @@ let outcomes = ["won", "lost", "drew"];
 
 player.name=prompt("Please enter your name:");
 player.move=options[prompt("Rock, scissors or paper?:").toLowerCase()];
-player.disp_move = options.disp[player.move]; //convert integer representation of move to a string
-computer.move=Math.floor(Math.random()*2)+1;  //random number between 1 and 3
-computer.disp_move = options.disp[computer.move];
-
+player.disp_move = options.disp[player.move];      //convert integer representation of move to a string
+computer.move=Math.floor(Math.random()*2)+1;      //random number between 1 and 3
+computer.disp_move = options.disp[computer.move];  //convert integer representation of move to a string
 let game=win_check();
 console.log(`${player.name} played ${player.disp_move} against ${computer.disp_move}, and ${game}.`);
 console.log(player.results());
+
 
 function win_check(){
     player.games++;
