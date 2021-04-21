@@ -1,6 +1,6 @@
 let player = {
     name: "",
-    move: null,
+    move: 0,
     wins: 0,
     draws: 0,
     losses: 0,
@@ -10,12 +10,27 @@ let player = {
     }
 };
 let computer ={
-    move: null,
+    move: 0,
+    icon: ["icon-comp_rock","icon-comp_paper","icon-comp_scis"]
 };
 let outcomes = ["won", "lost", "drew"];
 
-//player.name=prompt("Please enter your name:");
-//document.getElementById("name").innerHTML = player.name;
+function set_name(){
+    player_name = document.getElementById("username").value;
+    player.name = player_name;
+    //if(!localStorage.getItem(player_name)) {
+    //    let player = Object.create(player)
+    //    player.name = player_name;
+    //  } else {
+    //    load_profile();
+    //  }
+}
+
+function store_profile(){
+}
+function load_profile(){
+}
+
 function set_player_move(move_clicked){
     let icons = ["icon-rock","icon-paper","icon-scissors"];
     let chosen_move = icons.splice(move_clicked-1,1);
@@ -28,16 +43,16 @@ function set_player_move(move_clicked){
 }
 
 function set_computer_move(){
-    computer.move=Math.floor(Math.random()*2)+1;
+    computer.move=Math.floor(Math.random()*3)+1;
+    document.getElementById("icon-computer").id=computer["icon"][computer.move-1];
 }
 
 function play_game(){
-    set_computer_move();
-    if (player.move !== null){
+    if (player.move !== 0){
+        set_computer_move();
         let result = win_check();
-        console.log(result, player.results());
+        console.log(player.results());
     }
-    reset_icons();
 }
 
 function reset_icons(){
@@ -46,6 +61,7 @@ function reset_icons(){
         document.getElementById(icons_reset[i]).style.color = "";
         document.getElementById(icons_reset[i]).style.opacity = "";
     }
+    document.getElementById(computer["icon"][computer.move-1]).id = "icon-computer";
     player.move=null;
     computer.move=null;
 }

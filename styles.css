@@ -43,6 +43,27 @@ div{
     flex-flow: row;
     justify-content: space-evenly;
 }
+/*---------------Name-----------------*/
+.name{
+    justify-content: center;
+    font-weight: lighter; 
+}
+#username{
+    background-color: rgb(49, 49, 49);
+    color:skyblue;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    font-size: 1em;
+    font-weight:inherit;
+  
+}
+#username:focus {
+    outline: none;
+}
+
+
 /*---------------Player-----------------*/
 .player{
     flex-flow: column;
@@ -79,24 +100,37 @@ span.player_move:hover {
 .computer{
     flex-flow: column;
     align-items:center;
+    font-size: 7em;
 }
 
 #icon-computer:before {
-    font-size: 5em;
     content: "\e956";
 }
 #icon-keyboard:before {
     font-size: 2em;
     content: "\e955";
 }
+#icon-comp_scis:before {
+    content: "\e900";
+}
+#icon-comp_rock:before {
+    content: "\e902";
+}
+#icon-comp_paper:before {
+    content: "\e903";
+}
+
 /*---------------Buttons-----------------*/
 
-.buttons{
+.functionality{
     flex-flow: row;
     justify-content: space-evenly;
     position: fixed;
     bottom:5vh;
     width: 90vw;
+}
+span.buttons:hover {
+    color: rgb(211, 170, 67);
 }
 #icon-play:before {
     font-size: 2em;
@@ -107,6 +141,10 @@ span.player_move:hover {
     content: "\ea1e";
 }
 #icon-retry:before {
-    font-size: 2em;
+    font-size: 1.8em;
     content: "\e984";
+}
+#icon-list:before {
+    font-size: 2em;
+    content: "\e9b9";
 }
