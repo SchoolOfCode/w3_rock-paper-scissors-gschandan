@@ -16,26 +16,37 @@
     font-family: 'RockPaperScissors','Segoe UI', Tahoma, Verdana, sans-serif;
     display: flex;
     flex-flow: column;
-    align-content: flex-start;
+    align-content: space-between;
     font-size: min(max(12px, 3vw), 48px);
-    margin-right: auto;
+    font-weight: lighter;
 }
+
 .greet{
     font-size: 2.75em;
     font-weight: lighter;
     text-align: center;
-    color:rgb(113, 213, 253);
 }
+#g_rock{
+    color: skyblue;
+}
+#g_paper{
+    color: rgb(211, 170, 67);
+}
+#g_scissors{
+    color: rgb(201, 144, 118);
+}
+
 div{
     display: flex;
 }
 .game{
     flex-flow: row;
-    align-items:center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
+/*---------------Player-----------------*/
 .player{
     flex-flow: column;
+    align-self: center;
 }
 .headings{
     font-size: 1.5em;
@@ -43,16 +54,13 @@ div{
 }
 .headings:hover{
     font-size: 1.5em;
-    font-weight: lighter;
     color:skyblue;
 }
 span.player_move {
     font-size: 1.75em;
-    font-weight: lighter;
     color:skyblue;
 }
 span.player_move:hover {
-    font-weight: lighter;
     color: lightcoral;
 }
 #icon-rock:before {
@@ -67,21 +75,38 @@ span.player_move:hover {
     content: "\ea5a";
     opacity: 1.0;
 }
-#middle_vs{
-    margin: 3.25em 0 0 0;
-    font-size: 1.5em;
-}
+/*---------------Computer-----------------*/
 .computer{
     flex-flow: column;
     align-items:center;
 }
 
 #icon-computer:before {
-    font-size: 3.5em;
+    font-size: 5em;
     content: "\e956";
 }
 #icon-keyboard:before {
-    font-size: 2.75em;
+    font-size: 2em;
     content: "\e955";
 }
+/*---------------Buttons-----------------*/
 
+.buttons{
+    flex-flow: row;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom:5vh;
+    width: 90vw;
+}
+#icon-play:before {
+    font-size: 2em;
+    content: "\ea1c";
+}
+#icon-stop:before {
+    font-size: 2em;
+    content: "\ea1e";
+}
+#icon-retry:before {
+    font-size: 2em;
+    content: "\e984";
+}

@@ -8,12 +8,11 @@
   <body class="parent">
     <header>
       <h1 aria-label="Rock Paper Scissors game"></h1>
-      <h3 class="greet">Rock Paper Scissors</h3>
+      <h3 class="greet"><span id="g_rock">Rock </span><span id="g_paper">Paper </span><span id="g_scissors">Scissors</span> </h3>
     </header>
     <main>
       <div class="game">
           <div class="player">
-            <p class="headings">Choose your item:</p>
             <div id="rock">
               <span class="player_move" id="icon-rock" onclick="set_player_move(1)">Rock</span>
             </div>
@@ -24,11 +23,7 @@
               <span class="player_move" id="icon-scissors" onclick="set_player_move(3)">Scissors</span>
             </div>
           </div>
-          <div class="headings" id="middle_vs">
-            <p>VS</p>
-          </div>
           <div class="computer">
-            <p class ="headings">Computer:</p>
             <div id="monitor">
               <span class="computer_disp" id="icon-computer"></span>
             </div>
@@ -38,6 +33,19 @@
           </div>
       </div>
     </main>
+    <footer>
+      <div class="buttons">
+        <div>
+          <span id="icon-play" onclick="play_game()"></span>
+        </div>
+        <div>
+          <span id="icon-retry" onclick="reset_icons()"></span>
+        </div>
+        <div>
+          <span id="icon-stop"></span>
+        </div>
+      </div>
+    </footer>
     <script src="main.js"></script>
   </body>
 </html>
