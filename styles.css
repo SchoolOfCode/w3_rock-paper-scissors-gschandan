@@ -1,36 +1,38 @@
 @font-face {
     font-family: 'RockPaperScissors';
-    src:  url('fonts/RockPaperScissors.eot?46loin');
-    src:  url('fonts/RockPaperScissors.eot?46loin#iefix') format('embedded-opentype'),
-      url('fonts/RockPaperScissors.ttf?46loin') format('truetype'),
-      url('fonts/RockPaperScissors.woff?46loin') format('woff'),
-      url('fonts/RockPaperScissors.svg?46loin#RockPaperScissors') format('svg');
+    src:  url('fonts/RockPaperScissors.eot?3z8hsp');
+    src:  url('fonts/RockPaperScissors.eot?3z8hsp#iefix') format('embedded-opentype'),
+      url('fonts/RockPaperScissors.ttf?3z8hsp') format('truetype'),
+      url('fonts/RockPaperScissors.woff?3z8hsp') format('woff'),
+      url('fonts/RockPaperScissors.svg?3z8hsp#RockPaperScissors') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
   }
-
-.parent{
-    background: rgb(49, 49, 49);
-    color:skyblue;
+.container{
     font-family: 'RockPaperScissors','Segoe UI', Tahoma, Verdana, sans-serif;
     display: flex;
     flex-flow: column;
-    align-content: space-between;
+    align-items: center;
+    justify-content:center;
     font-size: min(max(12px, 3vw), 48px);
-    font-weight: lighter;
+    width: 100vw;
+    height: 100vh;
 }
-
+body{
+    background: rgb(49, 49, 49);
+    color:skyblue;
+    font-weight: 100;
+}
 .greet{
     font-size: 2.75em;
-    font-weight: lighter;
-    text-align: center;
-}
+    font-weight: 100;
+ }
 #g_rock{
-    color: skyblue;
+    color: rgb(211, 170, 67);
 }
 #g_paper{
-    color: rgb(211, 170, 67);
+    color: skyblue;
 }
 #g_scissors{
     color: rgb(201, 144, 118);
@@ -41,12 +43,14 @@ div{
 }
 .game{
     flex-flow: row;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
+    padding-bottom: 7vh;
 }
 /*---------------Name-----------------*/
 .name{
     justify-content: center;
-    font-weight: lighter; 
+    font-weight: 100;
+    padding-bottom: 8vh; 
 }
 #username{
     background-color: rgb(49, 49, 49);
@@ -56,14 +60,33 @@ div{
     border-left-style: hidden;
     border-bottom-style: groove;
     font-size: 1em;
-    font-weight:inherit;
-  
 }
 #username:focus {
     outline: none;
 }
+/*---------------Computer-----------------*/
+.computer{
+    flex-flow: column;
+    align-items:center;
+    font-size: 7em;
+}
 
-
+#icon-computer:before {
+    content: "\e956";
+}
+#icon-keyboard:before {
+    font-size: 2em;
+    content: "\e955";
+}
+#icon-comp_scis:before {
+    content: "\e900";
+}
+#icon-comp_rock:before {
+    content: "\e902";
+}
+#icon-comp_paper:before {
+    content: "\e903";
+}
 /*---------------Player-----------------*/
 .player{
     flex-flow: column;
@@ -96,55 +119,29 @@ span.player_move:hover {
     content: "\ea5a";
     opacity: 1.0;
 }
-/*---------------Computer-----------------*/
-.computer{
-    flex-flow: column;
-    align-items:center;
-    font-size: 7em;
-}
-
-#icon-computer:before {
-    content: "\e956";
-}
-#icon-keyboard:before {
-    font-size: 2em;
-    content: "\e955";
-}
-#icon-comp_scis:before {
-    content: "\e900";
-}
-#icon-comp_rock:before {
-    content: "\e902";
-}
-#icon-comp_paper:before {
-    content: "\e903";
-}
-
 /*---------------Buttons-----------------*/
 
 .functionality{
-    flex-flow: row;
+    flex-flow: column;
     justify-content: space-evenly;
-    position: fixed;
-    bottom:5vh;
-    width: 90vw;
 }
 span.buttons:hover {
     color: rgb(211, 170, 67);
 }
-#icon-play:before {
-    font-size: 2em;
-    content: "\ea1c";
-}
-#icon-stop:before {
-    font-size: 2em;
-    content: "\ea1e";
-}
 #icon-retry:before {
-    font-size: 1.8em;
+    font-size: 1.5em;
     content: "\e984";
 }
+#icon-help:before {
+    font-size: 1.5em;
+    content: "\ea09";
+}
 #icon-list:before {
-    font-size: 2em;
+    font-size: 1.5em;
     content: "\e9b9";
 }
+/*---------------Results-----------------*/
+.results{
+    text-align: center;
+}
+

@@ -5,55 +5,55 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Rock, Paper, Scissors</title>
   </head>
-  <body class="parent">
-    <header>
-      <h1 aria-label="Rock Paper Scissors game"></h1>
-      <h3 class="greet"><span id="g_rock">Rock </span><span id="g_paper">Paper </span><span id="g_scissors">Scissors</span> </h3>
-    </header>
-    <main>
-      <div class = "name">
-        <form id="name_form">
-          <label for"username">Username:</label>
-          <input type="text" id="username" maxlength="10" size="9" onfocusout="set_name()" autofocus>
-        </form>
-      </div>
-      <div class="game">
-          <div class="player">
-            <div id="rock">
-              <span class="player_move" id="icon-rock" onclick="set_player_move(1)">Rock</span>
+  <body>
+    <div class="container">
+      <header>
+        <h1 aria-label="Rock Paper Scissors game"></h1>
+        <h3 class="greet"><span id="g_rock">Rock </span><span id="g_paper">Paper </span><span id="g_scissors">Scissors</span> </h3>
+      </header>
+      <main>
+        <div class = "name">
+          <form id="name_form">
+            <label for"username">Username:</label>
+            <input type="text" id="username" maxlength="10" size="14" autofocus>
+          </form>
+        </div>
+        <div class="game">
+            <div class="computer">
+              <div id="monitor">
+                <span class="computer_disp" id="icon-computer"></span>
+              </div>
             </div>
-            <div id="paper">
-              <span class="player_move" id="icon-paper" onclick="set_player_move(2)">Paper</span>
+            <div class="player">
+              <div id="rock">
+                <span class="player_move" id="icon-rock" >Rock</span>
+              </div>
+              <div id="paper">
+                <span class="player_move" id="icon-paper">Paper</span>
+              </div>
+              <div id="scissors">
+                <span class="player_move" id="icon-scissors">Scissors</span>
+              </div>
             </div>
-            <div id="scissors">
-              <span class="player_move" id="icon-scissors" onclick="set_player_move(3)">Scissors</span>
-            </div>
+            <div class="functionality">
+              <div>
+                <span class="buttons" id="icon-retry"></span>
+              </div>
+              <div>
+                <span class="buttons" id="icon-help"></span>
+              </div>
+              <div>
+                <span class="buttons" id="icon-list"></span>
+              </div>
           </div>
-          <div class="computer">
-            <div id="monitor">
-              <span class="computer_disp" id="icon-computer"></span>
-            </div>
-          </div>
-      </div>
-      <div class = "results">
-      </div>
-    </main>
-    <footer>
-      <div class="functionality">
-        <div>
-          <span class="buttons" id="icon-play" onclick="play_game()"></span>
         </div>
-        <div>
-          <span class="buttons" id="icon-retry" onclick="reset_icons()"></span>
+        <div class = "results">
+          <div id="res"></div>
         </div>
-        <div>
-          <span class="buttons" id="icon-stop"></span>
-        </div>
-        <div>
-          <span class="buttons" id="icon-list"></span>
-        </div>
-      </div>
-    </footer>
+      </main>
+      <footer>
+      </footer>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
