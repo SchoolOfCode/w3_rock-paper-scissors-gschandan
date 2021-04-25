@@ -45,6 +45,10 @@ div{
     justify-content:space-evenly;
     padding-bottom: 2em;
 }
+
+.player, .functionality{
+    padding-left: 2em;
+}
 /*---------------Name-----------------*/
 .name{
     justify-content: center;
@@ -65,9 +69,8 @@ div{
 }
 /*---------------Computer-----------------*/
 .computer{
-    flex-flow: column;
-    align-items:center;
     font-size: 7em;
+
 }
 
 #icon-computer:before {

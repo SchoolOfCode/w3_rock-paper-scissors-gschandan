@@ -63,7 +63,7 @@ const paperElement = document.getElementById("icon-paper");
 const scissorsElement = document.getElementById("icon-scissors");
 const retryElement = document.getElementById("icon-retry");
 const helpElement = document.getElementById("icon-help");
-const listElement = document.getElementById("icon-list"); //list(statsboard)
+const listElement = document.getElementById("icon-list"); //list == statsboard
 const usernameElement = document.getElementById("username");
 
 
