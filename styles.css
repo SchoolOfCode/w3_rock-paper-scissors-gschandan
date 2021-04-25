@@ -14,7 +14,6 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content:center;
     font-size: min(max(12px, 3vw), 48px);
     width: 100vw;
     height: 100vh;
@@ -44,13 +43,13 @@ div{
 .game{
     flex-flow: row;
     justify-content:space-evenly;
-    padding-bottom: 7vh;
+    padding-bottom: 2em;
 }
 /*---------------Name-----------------*/
 .name{
     justify-content: center;
     font-weight: 100;
-    padding-bottom: 8vh; 
+    padding-bottom: 2em;
 }
 #username{
     background-color: rgb(49, 49, 49);
@@ -142,6 +141,13 @@ span.buttons:hover {
 }
 /*---------------Results-----------------*/
 .results{
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
-
+#curr_res{
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+}
+#tot_res{
+    font-size: 1em;
+}

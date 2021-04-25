@@ -19,20 +19,29 @@ class Players{
     }
     checkPlayerExists(username){
         return this.players.some(function(elem){
-            return elem.username === username;
+           return elem.username === username;
         });
     }
     newPlayer(username){
-        let name = new Human(username,0,0,0,0,0);
-        this.players.push(name);
-        return name;
+        let currentPlayer = new Human(username,0,0,0,0,0);
+        this.players.push(currentPlayer);
+        return currentPlayer;
     }
     loadPlayer(username){
-        if (checkPlayerExists(username)){
-            
+        let currentPlayer;
+        let id;
+        if (this.checkPlayerExists(username)){
+            currentPlayer = this.players.find(function(elem){
+                return elem.username === username;
+            });
+            id = this.players.findIndex(function(elem){
+                return elem.username === username;
+            });
         } else{
-            newPlayer(username);
+            currentPlayer = this.newPlayer(username);
+            id = this.players.length -1; //0 indexed array of players
         }
+        return [currentPlayer, id];
     }
     get numberPlayers(){
         return this.players.length;
@@ -69,26 +78,20 @@ listElement.addEventListener('click', display_statsboard);//TODO
 
 function set_player_move(move_clicked){
     let username = usernameElement.value;
-    // for (let i = 0; i <= rps_players.numberPlayers; i++){
-    //     if 
-    // }
-    rps_players.newPlayer(username);
-    rps_players.newPlayer("Jim");
-    console.log(rps_players.numberPlayers);
-    console.log(rps_players.everyPlayer);
-    console.log(rps_players.checkPlayerExists("Jim"));
-    console.log(rps_players.checkPlayerExists("Tim"));
+    rps_players.loadPlayer("1337gamer"); //leaderboard leader
+    rps_players.players[0].wins = 999;
+    rps_players.players[0].games = 999;
 
-    // console.log(username);
-    // let icons = ["icon-rock","icon-paper","icon-scissors"];
-    // let chosen_move = icons.splice(move_clicked-1,1);
-    // for(i=0;i<2;i++){
-    //     document.getElementById(icons[i]).style.opacity = "0.2"; //make the other moves more transparent
-    // }
-    // icons.push(chosen_move);
-    // currentPlayer.move=move_clicked;
-    // play_game(currentPlayer);
-    // localStorage.setItem(currentPlayer.username, JSON.stringify(currentPlayer));
+    let [currentPlayer,id] = rps_players.loadPlayer(username);
+
+    let icons = ["icon-rock","icon-paper","icon-scissors"];
+    let chosen_move = icons.splice(move_clicked-1,1);
+    for(i=0;i<2;i++){
+        document.getElementById(icons[i]).style.opacity = "0.2"; //make the other moves more transparent
+    }
+    icons.push(chosen_move);
+    currentPlayer.move=move_clicked;
+    play_game(currentPlayer);
 }
 
 function set_computer_move(){
@@ -97,11 +100,12 @@ function set_computer_move(){
 }
 
 function play_game(currentPlayer){
-    if (currentPlayer.move !== 0 ){
+    if (currentPlayer.move !== 0 && computer.move == 0){
         set_computer_move();
         let result = win_check(currentPlayer);
         console.log(currentPlayer.results());
-        document.getElementById("res").innerHTML = currentPlayer.results();
+        document.getElementById("curr_res").innerHTML = `You ${result}!`;
+        document.getElementById("tot_res").innerHTML = currentPlayer.results();
     }
 }
 
