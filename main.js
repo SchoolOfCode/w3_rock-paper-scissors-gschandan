@@ -1,3 +1,23 @@
+//DOM Event listeners
+const rockElement = document.getElementById("icon-rock");
+const paperElement = document.getElementById("icon-paper");
+const scissorsElement = document.getElementById("icon-scissors");
+const retryElement = document.getElementById("icon-retry");
+const helpElement = document.getElementById("icon-help");
+const listElement = document.getElementById("icon-list"); //list == statsboard
+const usernameElement = document.getElementById("username");
+const helpImageElement = document.getElementById("help_overlay");
+
+
+//DOM Handlers
+rockElement.addEventListener('click', function(){ set_player_move(1);});
+paperElement.addEventListener('click', function(){ set_player_move(2);});
+scissorsElement.addEventListener('click', function(){ set_player_move(3);});
+retryElement.addEventListener('click', reset_icons);
+helpElement.addEventListener('click', display_help);
+helpImageElement.addEventListener('click', hide_help);
+listElement.addEventListener('click', display_statsboard);//TODO
+
 //constructor class for the human players
 class Human {
     constructor(username, move,wins,draws,losses,games){
@@ -57,25 +77,6 @@ let computer ={
 };
 let outcomes = ["won", "lost", "drew"];
 
-//DOM Event listeners
-const rockElement = document.getElementById("icon-rock");
-const paperElement = document.getElementById("icon-paper");
-const scissorsElement = document.getElementById("icon-scissors");
-const retryElement = document.getElementById("icon-retry");
-const helpElement = document.getElementById("icon-help");
-const listElement = document.getElementById("icon-list"); //list == statsboard
-const usernameElement = document.getElementById("username");
-
-
-//DOM Handlers
-rockElement.addEventListener('click', function(){ set_player_move(1);});
-paperElement.addEventListener('click', function(){ set_player_move(2);});
-scissorsElement.addEventListener('click', function(){ set_player_move(3);});
-retryElement.addEventListener('click', reset_icons);
-helpElement.addEventListener('click', display_help);//TODO
-listElement.addEventListener('click', display_statsboard);//TODO
-
-
 function set_player_move(move_clicked){
     let username = usernameElement.value;
     rps_players.loadPlayer("1337gamer"); //leaderboard leader
@@ -100,7 +101,7 @@ function set_computer_move(){
 }
 
 function play_game(currentPlayer){
-    if (currentPlayer.move !== 0 && computer.move == 0){
+    if (currentPlayer.move !== 0 && computer.move === 0){
         set_computer_move();
         let result = win_check(currentPlayer);
         console.log(currentPlayer.results());
@@ -125,7 +126,7 @@ function win_check(currentPlayer){
     if (currentPlayer.move === computer.move){
         currentPlayer.draws++;
         return outcomes[2];
-    } else if ((currentPlayer.move - computer.move) % 3 == 1){    //1 beats 3, 2 beats 1, and 3 beats 2
+    } else if (((currentPlayer.move - computer.move) % 3) == 1){    //1 beats 3, 2 beats 1, and 3 beats 2
         currentPlayer.wins++;
         return outcomes[0];
     } else{
@@ -135,7 +136,12 @@ function win_check(currentPlayer){
 }
 
 function display_help(){
-
+    document.getElementById("game_container").style.display = "none";
+    document.getElementById("help_overlay").style.display = "flex";
+}
+function hide_help(){
+    document.getElementById("game_container").style.display = "flex";
+    document.getElementById("help_overlay").style.display = "none";
 }
 
 function display_statsboard(){

@@ -18,6 +18,14 @@
     width: 100vw;
     height: 100vh;
 }
+#game_container{
+    display: flex;
+}
+#help_overlay{
+    width: 90vw;
+    height: auto;
+    display:none;
+}
 body{
     background: rgb(49, 49, 49);
     color:skyblue;
@@ -138,6 +146,7 @@ span.buttons:hover {
     font-size: 1.5em;
     content: "\ea09";
 }
+
 #icon-list:before {
     font-size: 1.5em;
     content: "\e9b9";
