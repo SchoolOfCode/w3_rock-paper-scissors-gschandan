@@ -8,16 +8,19 @@ const listElement = document.getElementById("icon-list"); //list == statsboard
 const usernameElement = document.getElementById("username");
 const helpImageElement = document.getElementById("help_overlay");
 
-
 //DOM Handlers
-rockElement.addEventListener('click', function(){ set_player_move(1);});
-paperElement.addEventListener('click', function(){ set_player_move(2);});
-scissorsElement.addEventListener('click', function(){ set_player_move(3);});
+rockElement.addEventListener('click', function(){ set_player_move(0);});
+paperElement.addEventListener('click', function(){ set_player_move(1);});
+scissorsElement.addEventListener('click', function(){ set_player_move(2);});
 retryElement.addEventListener('click', reset_icons);
 helpElement.addEventListener('click', display_help);
 helpImageElement.addEventListener('click', hide_help);
-listElement.addEventListener('click', display_statsboard);//TODO
 
+let click_counter = 0;
+listElement.addEventListener('click', function(){
+    click_counter++;
+    display_statsboard(click_counter);
+});
 //constructor class for the human players
 class Human {
     constructor(username, move,wins,draws,losses,games){
@@ -31,11 +34,15 @@ class Human {
     results(){
         return `${this.username}'s results over ${this.games} game(s) are: <br> ${this.wins} Wins , ${this.draws} Draws and ${this.losses} Losses.`;
     }
+    high_Score(){
+        return [this.username, this.wins];
+    }
 };
 //Container class for all the players
 class Players{
     constructor(){
         this.players = [];
+        this.leaders = [];
     }
     checkPlayerExists(username){
         return this.players.some(function(elem){
@@ -43,7 +50,7 @@ class Players{
         });
     }
     newPlayer(username){
-        let currentPlayer = new Human(username,0,0,0,0,0);
+        let currentPlayer = new Human(username,null,0,0,0,0);
         this.players.push(currentPlayer);
         return currentPlayer;
     }
@@ -54,9 +61,7 @@ class Players{
             currentPlayer = this.players.find(function(elem){
                 return elem.username === username;
             });
-            id = this.players.findIndex(function(elem){
-                return elem.username === username;
-            });
+            id = this.playerID(username);
         } else{
             currentPlayer = this.newPlayer(username);
             id = this.players.length -1; //0 indexed array of players
@@ -69,16 +74,32 @@ class Players{
     get everyPlayer(){
         return this.players;
     }
+    playerID(username){
+        return this.players.findIndex(function(elem){
+            return elem.username === username;});
+    }
+    leaderBoard(){
+        for (let i = 0; i <this.players.length; i++){
+            this.leaders.push([this.players[i].username, this.players[i].wins]);
+        }
+        return this.leaders.sort(function(a,b){
+            return b[1]-a[1];
+        });
+    }
+    clearLeaderBoard(){
+        return this.leaders = [];
+    }
 }
-let rps_players = new Players(); //create a list of humans on loading the page
+let rps_players = new Players(); //create a container for a list of humans on loading the page
 let computer ={
-    move: 0,
+    move: null,
     icon: ["icon-comp_rock","icon-comp_paper","icon-comp_scis"]
 };
-let outcomes = ["won", "lost", "drew"];
+let outcomes = ["drew","won", "lost"];
 
 function set_player_move(move_clicked){
     let username = usernameElement.value;
+    console.log(username);
     rps_players.loadPlayer("1337gamer"); //leaderboard leader
     rps_players.players[0].wins = 999;
     rps_players.players[0].games = 999;
@@ -86,7 +107,7 @@ function set_player_move(move_clicked){
     let [currentPlayer,id] = rps_players.loadPlayer(username);
 
     let icons = ["icon-rock","icon-paper","icon-scissors"];
-    let chosen_move = icons.splice(move_clicked-1,1);
+    let chosen_move = icons.splice(move_clicked,1);
     for(i=0;i<2;i++){
         document.getElementById(icons[i]).style.opacity = "0.2"; //make the other moves more transparent
     }
@@ -96,15 +117,14 @@ function set_player_move(move_clicked){
 }
 
 function set_computer_move(){
-    computer.move=Math.floor(Math.random()*3)+1;
-    document.getElementById("icon-computer").id=computer["icon"][computer.move-1];
+    computer.move=Math.floor(Math.random()*3);
+    document.getElementById("icon-computer").id=computer["icon"][computer.move];
 }
 
 function play_game(currentPlayer){
-    if (currentPlayer.move !== 0 && computer.move === 0){
+    if (currentPlayer.move !== null && computer.move === null){
         set_computer_move();
         let result = win_check(currentPlayer);
-        console.log(currentPlayer.results());
         document.getElementById("curr_res").innerHTML = `You ${result}!`;
         document.getElementById("tot_res").innerHTML = currentPlayer.results();
     }
@@ -116,22 +136,30 @@ function reset_icons(currentPlayer){
         icons_reset[i].style.color = "";
         icons_reset[i].style.opacity = "";
     }
-    document.getElementById(computer["icon"][computer.move-1]).id = "icon-computer";
-    currentPlayer.move=0;
-    computer.move=0;
+    if (computer.move !== null){
+        document.getElementById(computer["icon"][computer.move]).id = "icon-computer";
+    }
+    currentPlayer.move=null;
+    computer.move=null;
 }
 
 function win_check(currentPlayer){
     currentPlayer.games++;
     if (currentPlayer.move === computer.move){
         currentPlayer.draws++;
-        return outcomes[2];
-    } else if (((currentPlayer.move - computer.move) % 3) == 1){    //1 beats 3, 2 beats 1, and 3 beats 2
-        currentPlayer.wins++;
         return outcomes[0];
+    } else if (currentPlayer.move == 0 && computer.move == 2){ //Rock vs Scissors
+        currentPlayer.wins++;
+        return outcomes[1];
+    } else if (currentPlayer.move == 1 && computer.move == 0){ //Paper vs Rock
+        currentPlayer.wins++;
+        return outcomes[1];
+    }else if (currentPlayer.move == 2 && computer.move == 1){ //Scissors vs Paper
+        currentPlayer.wins++;
+        return outcomes[1];
     } else{
         currentPlayer.losses++;
-        return outcomes[1];
+        return outcomes[2];
     }
 }
 
@@ -144,6 +172,20 @@ function hide_help(){
     document.getElementById("help_overlay").style.display = "none";
 }
 
-function display_statsboard(){
+function display_statsboard(click_counter){
+
+    let leaders = document.getElementsByClassName("stats");
+    if (click_counter % 2){
+        document.getElementById("leaderboard_container").style.display = "flex";
+        let current_leaders = rps_players.leaderBoard();
+        for(i=0;i<rps_players.leaders.length;i++){
+            leaders[i].innerHTML = `${i+1}. ${current_leaders[i][0]}  with ${current_leaders[i][1]} wins`;
+        }
+    } else{
+        document.getElementById("leaderboard_container").style.display = "none";
+        rps_players.clearLeaderBoard();
+    }
+
+
 
 }

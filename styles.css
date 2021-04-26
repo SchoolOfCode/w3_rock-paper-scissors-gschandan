@@ -9,14 +9,13 @@
     font-style: normal;
     font-display: block;
   }
+
 .container{
     font-family: 'RockPaperScissors','Segoe UI', Tahoma, Verdana, sans-serif;
     display: flex;
     flex-flow: column;
     align-items: center;
     font-size: min(max(12px, 3vw), 48px);
-    width: 100vw;
-    height: 100vh;
 }
 #game_container{
     display: flex;
@@ -32,7 +31,7 @@ body{
     font-weight: 100;
 }
 .greet{
-    font-size: 2.75em;
+    font-size: 2.5em;
     font-weight: 100;
  }
 #g_rock{
@@ -61,7 +60,7 @@ div{
 .name{
     justify-content: center;
     font-weight: 100;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 #username{
     background-color: rgb(49, 49, 49);
@@ -80,22 +79,17 @@ div{
     font-size: 7em;
 
 }
-
 #icon-computer:before {
     content: "\e956";
 }
-#icon-keyboard:before {
-    font-size: 2em;
-    content: "\e955";
-}
 #icon-comp_scis:before {
-    content: "\e900";
+    content: "\e903";
 }
 #icon-comp_rock:before {
     content: "\e902";
 }
 #icon-comp_paper:before {
-    content: "\e903";
+    content: "\e900";
 }
 /*---------------Player-----------------*/
 .player{
@@ -162,4 +156,20 @@ span.buttons:hover {
 }
 #tot_res{
     font-size: 1em;
+}
+/*---------------Stats Board-----------------*/
+#leaderboard_container{
+    padding-top: 0.5em;
+    display: none;
+    flex-direction: column;
+    text-align: center;
+}
+#leaderboard_container > label {
+    font-size: 1.5em;
+}
+.leader_items{
+    padding-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
