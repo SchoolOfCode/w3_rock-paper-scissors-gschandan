@@ -1,98 +1,35 @@
 # Rock, Paper, Scissors!
 
-Work through the tasks below **one by one**. Make sure you have completed each task before moving on to the next. Some steps will require you to change code you've already written.
+## Task:
+- Create a Rock Paper Scissors game using JS, CSS and HTML
+- Ideally it would have a username function to save and load scores
+- It must display the score on the page
 
-## Task 1: Logic
+## Design:
+I thought I would go with a clean and relatively minimal design, using the bare minimum text in the initial interface. I wanted the design to be self-explanatory as much as possible. Just in case, I did include a help button which would explain the interface to avoid any confusion. The help interface will disappear on clicking again.  
+<img src="images/help.png" alt="help page for the game with hints" width="600"/>
+I tried to make it look similar to a mobile app, centered in the screen, with icons to tap/click to perform various functions. Initially I had a play button so once the move was chosen, there was an oppurunity to re-select before playing, but it was too clunky on repeated testing, having to click play after selecting a move, therefore I changed it to play the game after clicking the move directly.  
+I disallowed submit on the username, as I wanted the username to remain visible whislt being used, and to remove an extra button that is not required.    
+The color scheme was taken from the default dark theme of VScode.
 
-To complete this ticket you will need to write a set of if statements in [main.js](main.js) that will determine the winner of rock, paper, scissors.
+## Current Game:  
+<img src="images/current_game.png" alt="an image of the current version of the game" width="600"/>
 
-We will hard-code each move in variables so that we can check our game logic, but will later delete these and instead use function parameters.
+## Learning:  
+I learned a lot mostly about JS and Icons from working on this game.
+### JS:
+I learned more about DOM event handlers. I had previously used HTML inline events, but I have since [learned](https://stackoverflow.com/a/6348597/15347906) that these are less flexible, and more prone to XSS. Therefore I refactored the code to use event handlers instead of relying on HTML events. 
+I also initially coded the player as an object, but then learned about classes and constructors, so refactored the player into a class, and the game into a container, every new player would be added to a list of player objects, for recall or score checking. Old players would have their scores retrieved.
+### Icons:  
+I utilised the free software FontForge to edit these icons, and the online app [icomoon](https://icomoon.io/app/#/select) to generate a font from my chosen icons. I had to edit the icons to make them fit my purpose of displaying the computers move in the screen. 
+<img src="images/building_fonts.png" alt="building font icons for the game" width="600"/>
+<img src="images/building_fonts_2.png" alt="editing font icons for the game" width="600"/>
 
-```js
-// change these variables to test your code
-let playerMove = "rock";
-let computerMove = "paper";
-```
-
-Plan out the possible combinations of rock, paper and scissors for the two moves. Then convert that logic to code and console.log the result of the game.
-
-This will be deemed as complete when all permutations of the three possible moves for each player have been handled correctly, e.g. rock vs rock is a draw, paper vs rock is a paper win, etc.
-
-## Task 2: Function
-
-Take the if statements that you've written and tested and put them into a function. The variables from before should now be taken in as parameters so that you can call the function with any two moves. Instead of printing the result to the console, the function should return:
-
-- `1` if player1 wins
-- `0` if it is a draw
-- `-1` if player1 loses (player2 wins)
-
-The function should be able to be used like so:
-
-```js
-function getWinner(player1, player2) {
-  // code goes here...
-}
-
-let result = getWinner("rock", "paper");
-```
-
-This will be deemed as complete when the function can be called with any combination of valid moves and returns the appropriate number.
-
-## Task 3: User Input
-
-Using `prompt`, get a user-inputted value for the player move. Then call your function with that value as the player move and the hard-coded computer move. Display the result using `alert`.
-
-This will be deemed as complete when you can input any move for the player move and hard-code any move for the computer move and see the correct result (1, 0, or -1) in the alert.
-
-## Task 4: Computer Player
-
-Write a function that generates a random computer move. Use that function to make a dynamic game where the computer move is randomly chosen every time instead of being hard-coded.
-
-<details>
-<summary>Hint</summary>
-`Math.random()` might be useful!
-</details>
-
-This will be deemed as complete when the player can input any move in the prompt, the computer move is chosen by random, and the correct result shows in the alert.
-
-## Task 5: Game Loop
-
-Now that we have a fully functioning game, our next step is to have it run as many times as people would like to play without having to refresh the page.
-
-Use a `while loop` and `confirm`.
-
-This will be deemed as complete when a player can keep playing indefinitely and has the option to stop playing after every round.
-
-## Task 6: Scores
-
-Keep track of how many games have been played, as well as the number of wins, losses, and draws.
-
-This will be deemed as complete when this information is displayed after each round.
-
-## Task 7: DOM
-
-Refactor your application so that all interactions are through HTML elements in [index.html](index.html) rather than `confirm`, `alert` and `prompt`. Using the DOM allows our game to be event-driven, so you may want to remove the while loop and instead compute the winner when an event is fired.
-
-This will be deemed as complete when `confirm`, `alert` and `prompt` are no longer used, user interaction is handled with HTML elements, and all the information is displayed on the page.
-
-## Task 8: Validation
-
-Create a username `input` field and use the username the player inputs in the game so that a player can see their name on the page when looking at where the scores are displayed.
-
-To make it more uniform, restrict the number of characters a username can be to 10 or fewer.
-
-This will be deemed as complete when the users cannot enter a username longer than 10 characters.
-
-🌟 BONUS: Make it so that valid usernames should only start with letters, not numbers or symbols.  
-🌟 EXTRA BONUS: Make it so that the first letter of the username should be capitalised.
-
-## Task 9: Style, Animation and User Experience
-
-Use CSS to add some style, flair, and animation to the playing experience on the page. Be creative! ✨ Keep in mind your user and make their experience as easy and enjoyable as possible.
-
-Some resources:
-
-- [Animations](https://animista.net/)
-- [Colour schemes](https://coolors.co/generate)
-- [Gradients](https://uigradients.com/)
-- [Box shadows](https://getcssscan.com/css-box-shadow-examples)
+## Some of the many potential areas for improvement:  
+- Sanitise input to the username form and code a way to handle duplicate usernames e.g. with a userprompt
+- Maybe make the computer a class
+- Fix the alignment of the leaderboard CSS so it is left aligned but centered in the page
+- Change the color of the icons dpeeneding on the win state i.e. green for either computer or the player winning, red for losing
+- Utilise local storage or session storage to keep the scoreboard persistent after refreshing, would also then need to include a reset stats button
+- Animations e.g. fireworks for winning or transitions, or animated fights between the moves e.g. scissors cutting paper using SVG paths
+- Place the player constructor class in a separate file e.g. player.js, to clean up the code slightly
