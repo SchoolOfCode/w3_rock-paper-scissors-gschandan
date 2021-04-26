@@ -23,8 +23,8 @@ I learned more about DOM event handlers. I had previously used HTML inline event
 I also initially coded the player as an object, but then learned about classes and constructors, so refactored the player into a class, and the game into a container, every new player would be added to a list of player objects, for recall or score checking. Old players would have their scores retrieved.
 ### Icons:  
 I utilised the free software FontForge to edit these icons, and the online app [icomoon](https://icomoon.io/app/#/select) to generate a font from my chosen icons. I had to edit the icons to make them fit my purpose of displaying the computers move in the screen. 
-<img src="images/building_fonts.png" alt="building font icons for the game" width="800"/>
-<img src="images/building_fonts_2.png" alt="editing font icons for the game" width="800"/>
+<img src="images/building_fonts.png" alt="building font icons for the game" width="400"/><img src="images/building_fonts_2.png" alt="editing font icons for the game" width="400"/>
+
 
 ## Some of the many potential areas for improvement:  
 - Sanitise input to the username form and code a way to handle duplicate usernames e.g. with a userprompt
