@@ -11,7 +11,7 @@ I thought I would go with a clean and relatively minimal design, using the bare 
 I tried to make it look similar to a mobile app, centered in the screen, with icons to tap/click to perform various functions. Initially I had a play button so once the move was chosen, there was an oppurunity to re-select before playing, but it was too clunky on repeated testing, having to click play after selecting a move, therefore I changed it to play the game after clicking the move directly.  
 I disallowed submit on the username, as I wanted the username to remain visible whislt being used, and to remove an extra button that is not required.    
 The color scheme was taken from the default dark theme of VScode.  
-I chose to use icons as I wanted the change the color of the images on hovering. I could have also used transparent pngs here.  
+I chose to use icons as I wanted to the change the color of the images/icons/moves on hovering. I could have also used transparent pngs here, but I chose to use SVGs/font-icons so I could scale them as I wanted.  
 
 ## Current Game:  
 <img src="images/current_game.png" alt="an image of the current version of the game" width="800"/>
