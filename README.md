@@ -7,13 +7,14 @@
 
 ## Design:
 I thought I would go with a clean and relatively minimal design, using the bare minimum text in the initial interface. I wanted the design to be self-explanatory as much as possible. Just in case, I did include a help button which would explain the interface to avoid any confusion. The help interface will disappear on clicking again.  
-<img src="images/help.png" alt="help page for the game with hints" width="600"/>
+<img src="images/help.png" alt="help page for the game with hints" width="800"/>  
 I tried to make it look similar to a mobile app, centered in the screen, with icons to tap/click to perform various functions. Initially I had a play button so once the move was chosen, there was an oppurunity to re-select before playing, but it was too clunky on repeated testing, having to click play after selecting a move, therefore I changed it to play the game after clicking the move directly.  
 I disallowed submit on the username, as I wanted the username to remain visible whislt being used, and to remove an extra button that is not required.    
-The color scheme was taken from the default dark theme of VScode.
+The color scheme was taken from the default dark theme of VScode.  
+I chose to use icons as I wanted the change the color of the images on hovering. I could have also used transparent pngs here.  
 
 ## Current Game:  
-<img src="images/current_game.png" alt="an image of the current version of the game" width="600"/>
+<img src="images/current_game.png" alt="an image of the current version of the game" width="800"/>
 
 ## Learning:  
 I learned a lot mostly about JS and Icons from working on this game.
@@ -22,8 +23,8 @@ I learned more about DOM event handlers. I had previously used HTML inline event
 I also initially coded the player as an object, but then learned about classes and constructors, so refactored the player into a class, and the game into a container, every new player would be added to a list of player objects, for recall or score checking. Old players would have their scores retrieved.
 ### Icons:  
 I utilised the free software FontForge to edit these icons, and the online app [icomoon](https://icomoon.io/app/#/select) to generate a font from my chosen icons. I had to edit the icons to make them fit my purpose of displaying the computers move in the screen. 
-<img src="images/building_fonts.png" alt="building font icons for the game" width="600"/>
-<img src="images/building_fonts_2.png" alt="editing font icons for the game" width="600"/>
+<img src="images/building_fonts.png" alt="building font icons for the game" width="800"/>
+<img src="images/building_fonts_2.png" alt="editing font icons for the game" width="800"/>
 
 ## Some of the many potential areas for improvement:  
 - Sanitise input to the username form and code a way to handle duplicate usernames e.g. with a userprompt
